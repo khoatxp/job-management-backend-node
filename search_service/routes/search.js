@@ -18,8 +18,8 @@ router.get('/user/:userId', (req, res) => {
 
 // add posting
 router.post('/jobPosting', function(req, res) {
+    // https://github.com/olivernn/lunr.js/blob/master/package.json
     res.json({requestBody: req.body})
-    // res.json("DID JOB POSINTG")
 });
 
 // Export router

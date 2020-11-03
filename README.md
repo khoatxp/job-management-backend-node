@@ -4,6 +4,8 @@
 
 This is a Resume Parser. Course cmpt470.
 
+All POST request body has to be encoded in JSON.
+
 Services are currently deployed on Cloud Run. We push a docker image to the Container Register.
 
 ## Commands
