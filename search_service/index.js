@@ -1,5 +1,6 @@
 'use strict'
 
+require('better-logging')(console)
 const express = require('express')
 
 // Create the server
