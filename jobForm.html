@@ -45,7 +45,7 @@
 <body class = "">
     <!--Left panel showing something-->
     <!--Job posting form-->
-    <form action="./scripts/jobFormHandler.js" method="post" >
+    <form class="job-form" action="./scripts/jobFormHandler.js" method="post" >
         <label for="job-title">Job Title</label>
         <input type="text" name="" id="job-title" class = "form-control" placeholder="Enter job title" required><br>
 
@@ -60,10 +60,25 @@
        body form{
            padding:3em;
            margin: 3em;
-           border: 1em solid whitesmoke;
+           border: 1em solid black;
            padding: 2em;
-    
+           width:40%;
+           margin-top: 5em;
+           margin-left: 25em;
+           background-color: #faebd7;
+           border-radius: 20px;
        }
+
+       body form input{
+           box-shadow: 2px 4px #888888;
+           border-radius: 20px;
+       }
+
+       body form textarea{
+           box-shadow: 2px 4px #888888;
+           border-radius: 20px;
+       }
+
        #job-description{
            width:100%;
        }
@@ -74,6 +89,18 @@
        }
        body form label:hover{
            color:navy;
+       }
+       .job-form button{
+           position: relative;
+           margin-left: 25%;
+           height:3em;
+           width:50%;
+           box-shadow: 2px 4px red;
+           font-size: 1.5em;
+           font: bold;
+           border-radius: 20px;
+
+
        }
 
 

@@ -2,7 +2,7 @@
   "name": "resumeparser",
   "version": "1.0.0",
   "description": "This is a Resume Parser. Course cmpt470.",
-  "main": "index.js",
+  "main": "formHandler.js",
   "dependencies": {
     "browser-sync": "^2.26.13",
     "express": "^4.17.1"
