@@ -2,7 +2,7 @@ GROUP="cmpt470"
 SERVICE="user_service"
 PORT_DEFINED_IN_INDEXJS="8080"
 LOCALHOST_PORT="8083"
-PROJECT_ID="glossy-cipher-294401"
+PROJECT_ID="jobmanagementsystem"
 
 build() {
     echo "Building Project..."

@@ -6,7 +6,7 @@ const express = require('express')
 const router = express.Router()
 
 // GET /products
-router.get('/', (req, res) => {
+router.get('/userservice', (req, res) => {
     res.json('User Service HELLO')
 })
 
