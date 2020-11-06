@@ -5,6 +5,8 @@ const express = require('express')
 // Create the server
 const server = express()
 
+server.use(express.json()) 
+
 // Routes
 server.use('/', [
     require('./routes/products')
