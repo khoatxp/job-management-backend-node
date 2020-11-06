@@ -1,11 +1,36 @@
 <html>
     <body>
-        <h4>Upload a file to remote server to compile and execute:</h4>
+        <h4>Choose resume file to parse:</h4>
        <ul>
        <form action="/parse" method="post" enctype="multipart/form-data">
-        <input class="btn btn-sm btn-warning" type="file" name="resume">
-        <input class="btn btn-sm btn-success" type="submit" value="Submit" > 
+        <input class="btn btn-sm btn-warning" id="file-input" type="file" name="resume" onchange="onUploadHandler()">
       </form> 
       </ul>
     </body>
+    
 </html>
+<script>
+  async function onUploadHandler(event) {
+    const toBase64 = file => new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = error => reject(error);
+  });
+  if (document.getElementById('file-input').files[0].size > 5242880) {
+    alert('File size too large (limit 5 MB)')
+    console.error("File size too large")
+    return;
+  }
+  const file = await toBase64(document.getElementById('file-input').files[0]);
+    // Simple POST request with a JSON body using fetch
+    const requestOptions = {
+      method: 'POST',
+      body: `{"content": "${file.split(',')[1]}"}`,
+      headers: { "content-type": "application/json"}
+    };
+  fetch('https://endpoint-pvwu2w75ta-uw.a.run.app/parseResume', requestOptions)
+      .then((response) => response.json())
+      .then((resume)=>console.log(resume))
+}
+</script>

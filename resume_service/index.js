@@ -1,46 +1,89 @@
 'use strict'
-
+//Dependency
 const express = require('express')
 const bodyParser = require('body-parser');
-const path = require('path');
 const multiparty = require("multiparty");
+const cors = require("cors");
+var fs = require("fs");
+const request = require("request");
 var app = express();
-app.use(express.json());
 
-app.use(bodyParser.json());
-app.use(express.urlencoded({extended:false}));
+//Middleware
+//app.options('*', cors()) ;
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({extended:false,limit: '50mb'}));
+//app.use(cors());
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin','*');
+    res.setHeader("Access-Control-Allow-Headers", "X-Requested-With,content-type, Accept,Authorization,Origin");
+    res.header('Access-Control-Allow-Credentials', true);
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH');
+    next();
+  });
+
 
 app.set('view engine', 'ejs');
 
-app.get('/resumeservice', (req, res) => {
+/**
+ * This page is to test output by choosing a resume and inspect response object
+ */
+app.get('/resumeservice',(req, res) => {
     res.render("index")
 })
 
-app.post('/parse',(req, res) =>{
+/**
+ * Parse the resume by file sent from client
+ * Then call the API and return result to client
+ */
+app.post('/parseByFile',(req, res) =>{
     var form = new multiparty.Form();
     form.parse(req, (err,fields,files)=>{
         if(err){
           res.end(err);
         }
-        res.json(files.resume[0]);
-        /*
+        var contents = fs.readFileSync(files.resume[0].path).toString('base64');
         request.post({
-            url:'https://jobs.lever.co/parseResume',
-            json: {
-                resume:files.resume[0]
-            },
+            url:'https://g5wkkduchj.execute-api.us-east-2.amazonaws.com/Prod',
+            
             headers: {
-                'Content-Type': 'application/json'
-            }},
+                'Content-Type': 'application/json',
+            },
+            
+            json: true,
+            body: {
+                content: contents
+            }
+        },
             function(error, response, body){
-                console.log(body);
-                res.json(response);
-        });
-        */
-
+                res.send(body);
+        })
         
     });
 
+})
+
+/**
+ * Parse the resume by the base64 encoding from client
+ * Then call the API and return result to client
+ */
+app.post('/parseResume',(req, res) =>{
+    request.post({
+        url:'https://g5wkkduchj.execute-api.us-east-2.amazonaws.com/Prod',
+        
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        
+        json: true,
+        body: {
+            content: req.body.content
+        }
+    },
+        function(error, response, body){
+            console.log(body);
+            res.setHeader('Content-Type', 'application/json');
+            res.status(200).json(body);
+    })
 })
 
     

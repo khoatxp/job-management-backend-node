@@ -17,9 +17,11 @@
     "author": "Google LLC",
     "license": "Apache-2.0",
     "dependencies": {
+        "cors": "^2.8.5",
         "ejs": "^3.1.5",
         "express": "^4.17.1",
-        "multiparty": "^4.2.2"
+        "multiparty": "^4.2.2",
+        "request": "^2.88.2"
     },
     "devDependencies": {
         "got": "^11.0.0",
