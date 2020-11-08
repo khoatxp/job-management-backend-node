@@ -8,7 +8,8 @@ const PORT = 5000;
 app.use(express.static(__dirname));
 
 app.get('/',(req, res) =>{
-    res.sendFile(path.join(__dirname,'createPostPage.html'));
+    //res.sendFile(path.join(__dirname,'createPostPage.html'));
+    res.sendFile(path.join(__dirname,'logIn.html'));
 });
 
 app.post('/',(req,res) => {
