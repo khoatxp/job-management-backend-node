@@ -1,5 +1,8 @@
 node_modules
+<<<<<<< HEAD
 build
 npm-debug.log
 .env
 .DS_Store
+=======
+>>>>>>> jobPosting
