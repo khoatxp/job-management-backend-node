@@ -8,7 +8,9 @@ const {MONGODB} = require ('./config.js');
 
 
 const server = new ApolloServer({
-    cors: true,
+    cors: {
+		origin: '*',		
+		credentials: true},
     typeDefs,
     resolvers,
     context: ({ req }) => ({ req })
