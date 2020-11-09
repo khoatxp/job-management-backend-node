@@ -9,7 +9,7 @@ const {MONGODB} = require ('./config.js');
 
 const app = express();
 var corsOptions = {
-    origin: "https://jobmanagementsystem.uc.r.appspot.com/",
+    origin: "https://jobmanagementsystem.uc.r.appspot.com",
     credentials: true 
   };
 
@@ -24,7 +24,7 @@ server.applyMiddleware({
     path: '/',
     cors: false, 
   })
-  
+
 mongoose
     .connect(MONGODB, {useUnifiedTopology: true,useNewUrlParser: true})
     .then(()=>{
