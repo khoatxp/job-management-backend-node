@@ -1,21 +1,30 @@
-const {ApolloServer} = require('apollo-server');
+const express = require('express');
+const {ApolloServer} = require('apollo-server-express');
 const mongoose=require('mongoose');
+const cors = require('cors');
 
 const typeDefs = require('./graphql/typeDefs');
 const resolvers = require('./graphql/resolvers')
 const {MONGODB} = require ('./config.js');
 
-
+const app = express();
+var corsOptions = {
+    origin: "https://jobmanagementsystem.uc.r.appspot.com/",
+    credentials: true 
+  };
 
 const server = new ApolloServer({
-    cors: {
-		origin: '*',		
-		credentials: true},
     typeDefs,
     resolvers,
     context: ({ req }) => ({ req })
 });
-
+app.use(cors(corsOptions));
+server.applyMiddleware({
+    app,
+    path: '/',
+    cors: false, 
+  })
+  
 mongoose
     .connect(MONGODB, {useUnifiedTopology: true,useNewUrlParser: true})
     .then(()=>{
@@ -26,7 +35,7 @@ mongoose
 const port = process.env.PORT || 8080;
 
 
-server.listen(port, error => {
+app.listen(port, error => {
     if (error) {
         console.error(error)
     } else {
