@@ -7,19 +7,23 @@ const typeDefs = require('./graphql/typeDefs');
 const resolvers = require('./graphql/resolvers')
 const {MONGODB} = require ('./config.js');
 
+
+
+const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+    context: ({req, res}) => {
+		return {
+			request: req
+		};
+	}
+});
 const app = express();
 
 app.use(cors({
 	origin: true,
 	credentials: true,
 }));
-
-const server = new ApolloServer({
-    typeDefs,
-    resolvers,
-    context: ({ req }) => ({ req })
-});
-
 server.applyMiddleware({
 	app,
 	path: '/',
