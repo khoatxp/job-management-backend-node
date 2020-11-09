@@ -21,7 +21,7 @@ const server = new ApolloServer({
 const app = express();
 
 app.use(cors({
-	origin: '*',
+	origin: true,
 	credentials: true,
 }));
 app.use((req, res, next) => {
