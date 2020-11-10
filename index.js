@@ -1,5 +1,3 @@
-const express = require('express');
-const cors = require('cors');
 const { ApolloServer } = require('apollo-server');
 const mongoose=require('mongoose');
 
@@ -10,41 +8,14 @@ const {MONGODB} = require ('./config.js');
 
 
 const server = new ApolloServer({
-    cors: {
-        origin: true,
-        credentials: true,
-      },
     typeDefs,
     resolvers,
-    context: ({req, res}) => {
-		return {
-			request: req
-		};
-    },
+    context: ({req}) => {{req}},
     playground: {
         endpoint: "/graphql"
     }
 });
-/*
-const app = express();
 
-app.use(cors({
-	origin: true,
-	credentials: true,
-}));
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin','https://jobmanagementsystem.uc.r.appspot.com/');
-    res.setHeader("Access-Control-Allow-Headers", "X-Requested-With,content-type, Accept,Authorization,Origin");
-    res.header('Access-Control-Allow-Credentials', true);
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH');
-    next();
-  });
-server.applyMiddleware({
-	app,
-	path: '/',
-	cors: false,
-});
-*/
 mongoose
     .connect(MONGODB, {useUnifiedTopology: true,useNewUrlParser: true})
     .then(()=>{
