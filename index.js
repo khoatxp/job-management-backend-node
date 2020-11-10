@@ -10,6 +10,10 @@ const {MONGODB} = require ('./config.js');
 
 
 const server = new ApolloServer({
+    cors: {
+        origin: true,
+        credentials: true,
+      },
     typeDefs,
     resolvers,
     context: ({req, res}) => {
@@ -50,12 +54,7 @@ mongoose
         });
 const port = process.env.PORT || 8080;
 
-server.createHandler({
-    cors: {
-      origin: true,
-      credentials: true,
-    },
-  })
+
 server.listen(port, error => {
     if (error) {
         console.error(error)
