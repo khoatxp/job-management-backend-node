@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const { ApolloServer } = require('apollo-server-express');
+const { ApolloServer } = require('apollo-server');
 const mongoose=require('mongoose');
 
 const typeDefs = require('./graphql/typeDefs');
@@ -18,6 +18,7 @@ const server = new ApolloServer({
 		};
 	}
 });
+/*
 const app = express();
 
 app.use(cors({
@@ -36,7 +37,7 @@ server.applyMiddleware({
 	path: '/',
 	cors: false,
 });
-
+*/
 mongoose
     .connect(MONGODB, {useUnifiedTopology: true,useNewUrlParser: true})
     .then(()=>{
@@ -47,7 +48,7 @@ mongoose
 const port = process.env.PORT || 8080;
 
 
-app.listen(port, error => {
+server.listen(port, error => {
     if (error) {
         console.error(error)
     } else {
