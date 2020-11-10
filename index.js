@@ -11,7 +11,7 @@ const {MONGODB} = require ('./config.js');
 
 const server = new ApolloServer({
     cors: {
-        origin: true,
+        origin: '*',
         credentials: true,
       },
     typeDefs,
@@ -22,7 +22,7 @@ const server = new ApolloServer({
 		};
     },
     playground: {
-        endpoint: "/dev/graphql"
+        endpoint: "/"
     }
 });
 /*
