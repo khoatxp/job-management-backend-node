@@ -8,9 +8,13 @@ const {MONGODB} = require ('./config.js');
 
 
 const server = new ApolloServer({
+    cors: {
+        origin: true,
+        credentials: true,
+      },
     typeDefs,
     resolvers,
-    context: ({req}) => {{req}},
+    context: ({req}) => {{ req}},
     playground: {
         endpoint: "/graphql"
     }
