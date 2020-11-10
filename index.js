@@ -16,7 +16,10 @@ const server = new ApolloServer({
 		return {
 			request: req
 		};
-	}
+    },
+    playground: {
+        endpoint: "/dev/graphql"
+    }
 });
 /*
 const app = express();
@@ -47,7 +50,12 @@ mongoose
         });
 const port = process.env.PORT || 8080;
 
-
+server.createHandler({
+    cors: {
+      origin: true,
+      credentials: true,
+    },
+  })
 server.listen(port, error => {
     if (error) {
         console.error(error)
