@@ -5,13 +5,14 @@ var index = new FlexSearch("match")
 
 module.exports = {
     add_index: function(posting) {
-        index.add(posting.id, posting.company + " " + posting.name + " " + posting.description)
-        map.set(posting.id, posting)
+        index.add(posting._id, posting.company + " " + posting.name + " " + posting.description)
+        map.set(posting._id, posting)
     },
 
     get_index: function(query, query_limit) {
         var index_results = index.search(query, query_limit)
 
+        // TODO: ONLY RETURN THE ID'S AND SAVE ONLY THE ID'S THE JOB POSTINGS SERVICE WILL RETURN THE DATA
         var results = []
         for (var i = 0; i < index_results.length; i++) {
             results.push(map.get(index_results[i]))
