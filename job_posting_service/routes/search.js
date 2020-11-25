@@ -8,7 +8,7 @@ const router = express.Router()
 
 // add posting
 router.post('/jobPosting', function (req, res) {
-    var posting_id = req.body._id
+    var posting_id = req.body.id
 
     console.info(`Adding Job Posting(${posting_id}): ${JSON.stringify(req.body)}`)
 
