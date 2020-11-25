@@ -11,17 +11,11 @@ const JOB_POSTING_COLLECTION = "job_posting"
 // add job posting
 router.post('/', function (req, res) {
     //TODO: validate the request that the user 
-<<<<<<< HEAD
     var post = req.body
     post.created_at = Date.now()
 
     // insert record to database
     database.insertRecord(JOB_POSTING_COLLECTION, post)
-=======
-
-    // insert record to database
-    database.insertRecord(JOB_POSTING_COLLECTION, req.body)
->>>>>>> master
         .then(function (insertedId) {
             res.sendStatus(204)
         })
