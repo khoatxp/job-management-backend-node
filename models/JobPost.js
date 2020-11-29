@@ -9,6 +9,15 @@ const jobPostSchema = new Schema({
     salary: String,
     title: String,
     location: String,
+    applicants:[{
+        username: String,
+        user:{
+            type: Schema.Types.ObjectId,
+            ref:'users'
+        },
+        resume: String,
+        submittedAt: String
+    }],
     user:{
         type: Schema.Types.ObjectId,
         ref:'users'

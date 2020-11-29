@@ -11,6 +11,14 @@ module.exports= {
                 throw new Error(err);
             }
         },
+        async getJobPostsBy(_, {username}){
+          try{
+              const jobposts = await JobPost.find({username:username}).sort({ createdAt: -1 });
+              return jobposts;
+          } catch(err){
+              throw new Error(err);
+          }
+      },
         async getJobPost(_, {postId}){
             try{
                 const jobPost = await JobPost.findById(postId);
@@ -74,6 +82,31 @@ module.exports= {
             } catch (err) {
               throw new Error(err);
             }
+        },
+        async addApplicant(_,{postId, resume}, context){
+          if (resume.trim() === '') {
+            throw new Error('Resume is empty');
+          }
+          const user = checkAuth(context);
+          try {
+            await JobPost.findByIdAndUpdate(
+              postId,
+              {"$push":{
+                applicants:{
+                  username:user.username,
+                  user: user.id,
+                  resume: resume,
+                  submittedAt: new Date().toISOString()
+                 }
+                }
+              }
+            );
+      
+            return 'Resume submitted successfully';
+              
+          } catch (err) {
+            throw new Error(err);
+          }
         }
     }
 }
