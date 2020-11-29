@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--Navigation bar-->
+    <%- include('./partials/nav.ejs') %>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body class = "">
+    <form class="createPost-btn" action="/displayForm" method='GET'>
+        <button class="btn btn-lg btn-primary" href = ''>Create Post</button>
+    </form>
+    <div class="container" style="padding:2em;">
+        <div class="row">
+          <div class="col-12">
+            <table class="table table-bordered">
+              <%- include('./partials/tableHeader.ejs') %>
+              <tbody>
+                    <% if(posts.length > 0) { %>
+                       <% posts.forEach(post => { %> 
+                        <tr>
+                            <td></td>
+                            <td><%= post.title %></td>
+                            <td><%= post.type %></td>
+                            <td><%= post.description %></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <% }) %>
+                    <% } %>
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    <!--Left panel showing something-->
+   
+    <style>
+       /*body form{
+           padding:3em;
+           margin: 3em;
+           border: 1em solid whitesmoke;
+           padding: 2em;
+
+       }*/
+       #job-description{
+           width:100%;
+       }
+       body form label{
+           font-size: 2rem;
+           font-weight: bold;
+           padding: 0.2em;
+       }
+       body form label:hover{
+           color:navy;
+       }
+
+       .createPost-btn {
+           margin-left: 40em;
+           margin-top: 2em;
+           
+       }
+
+
+    </style>
+
+
+
+
+</body>
+</html>

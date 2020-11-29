@@ -1,37 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#"><h1>Resume Parser</h1></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <!--Home html page link-->
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <!--Search Jobs Page-->
-              <a class="nav-link" href="#">Jobs</a> <!-- link to another html page-->
-            </li>
-            <li class="nav-item">
-                <!--Login Page-->
-              <a class="nav-link" href="#" role="button">
-                Logout
-              </a>
-            </li>
-          </ul>
-         <!--- <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search for jobs" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
-          -->
-        
-        </div>
-      </nav>
+    <%- include('./partials/nav.ejs')%>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,7 +12,7 @@
 <body class = "">
     <!--Left panel showing something-->
     <!--Job posting form-->
-    <form class="job-form" action="/" method="post" >
+    <form class="job-form" action="/displayPostList" method="get" >
         <label for="job-title">Job Title</label>
         <input type="text" name="job_title" id="job-title" class = "form-control" placeholder="Enter job title" required autofocus><br>
 
@@ -51,7 +21,7 @@
 
         <!---Job Description <input type="text" name="" id="job-desc" class = "form-control" placeholder="Enter job description" required><br>--->
         <!---<input type="submit" value="Publish" class = "form-control">--->
-        <button type="submit" class="btn btn-lg btn-primary">Publish</button>
+        <button  class="btn btn-lg btn-primary">Publish</button>
     </form>
     <style>
        body form{
