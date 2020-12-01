@@ -1,0 +1,10 @@
+div.signup-form{
+    border: solid black;
+}
+.login-form{
+    padding: 1em;
+}
+.container{
+max-width: 100%;
+align-content: center;
+}

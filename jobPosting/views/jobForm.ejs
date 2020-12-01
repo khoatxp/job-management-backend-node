@@ -12,16 +12,18 @@
 <body class = "">
     <!--Left panel showing something-->
     <!--Job posting form-->
-    <form class="job-form" action="/displayPostList" method="get" >
+    <form class="job-form" action="/displayPostList" method="POST" >
         <label for="job-title">Job Title</label>
         <input type="text" name="job_title" id="job-title" class = "form-control" placeholder="Enter job title" required autofocus><br>
-
+        <label for="cars">Job Type</label>
+        <select name="jobType" >
+            <option value="internship">Internship</option>
+            <option value="fullTime">Full Time</option>
+            <option value="partTime">Part Time</option>
+          </select><br>
         <label for="job-description">Job Description</label>
         <br><textarea class = "form-control" name="job_description" id="job-description" cols="50" rows="10" placeholder="Enter job description"></textarea><br>
-
-        <!---Job Description <input type="text" name="" id="job-desc" class = "form-control" placeholder="Enter job description" required><br>--->
-        <!---<input type="submit" value="Publish" class = "form-control">--->
-        <button  class="btn btn-lg btn-primary">Publish</button>
+        <button type="submit" class="btn btn-lg btn-primary">Publish</button>
     </form>
     <style>
        body form{

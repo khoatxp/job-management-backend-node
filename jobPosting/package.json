@@ -6,7 +6,8 @@
   "dependencies": {
     "browser-sync": "^2.26.13",
     "ejs": "^3.1.5",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongodb": "^3.6.3"
   },
   "devDependencies": {},
   "scripts": {
