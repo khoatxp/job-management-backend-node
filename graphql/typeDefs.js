@@ -42,6 +42,6 @@ module.exports = gql `
       login(username: String!, password: String!): User!
       createJobPost(body: String!, company: String!, salary: String!, title:String!, location:String!): JobPost!
       deleteJobPost(postId: ID!): String!
-      addApplicant(postId:ID!, resume: String!): String!
+      addApplicant(postId:ID!, resume: String!, originalFile: String!): String!
   }
 `;

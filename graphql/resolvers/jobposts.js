@@ -103,7 +103,7 @@ module.exports= {
               throw new Error(err);
             }
         },
-        async addApplicant(_,{postId, resume}, context){
+        async addApplicant(_,{postId, resume, originalFile}, context){
           if (resume.trim() === '') {
             throw new Error('Resume is empty');
           }
@@ -116,7 +116,8 @@ module.exports= {
                   username:user.username,
                   user: user.id,
                   resume: resume,
-                  submittedAt: new Date().toISOString()
+                  submittedAt: new Date().toISOString(),
+                  originalFile: originalFile
                  }
                 }
               }

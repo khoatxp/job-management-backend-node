@@ -16,7 +16,8 @@ const jobPostSchema = new Schema({
             ref:'users'
         },
         resume: String,
-        submittedAt: String
+        submittedAt: String,
+        originalFile: String
     }],
     user:{
         type: Schema.Types.ObjectId,
