@@ -3,6 +3,26 @@ const JobPost = require('../../models/JobPost');
 const checkAuth = require('../../util/authenticators');
 module.exports= {
     Query:{
+        async searchJobPosts(_,{search}){
+          let searchQuery = {};
+          if (search) {
+            // update the search query
+            searchQuery = {
+              $or: [
+                { title: { $regex: search, $options: 'i' } },
+                { company: { $regex: search, $options: 'i' } },
+                { body: { $regex: search, $options: 'i' } },
+                { location: { $regex: search, $options: 'i' } }
+              ]
+            };
+          }
+          try{
+                const jobposts = await JobPost.find(searchQuery).sort({ createdAt: -1 });
+                return jobposts;
+            } catch(err){
+                throw new Error(err);
+            }
+        },
         async getJobPosts(){
             try{
                 const jobposts = await JobPost.find().sort({ createdAt: -1 });

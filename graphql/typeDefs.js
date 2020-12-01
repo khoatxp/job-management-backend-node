@@ -17,7 +17,7 @@ module.exports = gql `
     createdAt: String!
     applicants: [Applicant]
   }
-  
+
   type User{
       id: ID!
       email: String!
@@ -32,6 +32,7 @@ module.exports = gql `
       email: String!
   }
   type Query {
+    searchJobPosts(search: String): [JobPost],
     getJobPosts: [JobPost],
     getJobPostsBy(username: String!): [JobPost],
     getJobPost(postId: ID!): JobPost
