@@ -1,23 +1,25 @@
 'use strict'
 
 const express = require('express')
+var cors = require('cors')
 
 // Create the server
 const server = express()
 
 server.use(express.json()) 
+server.use(cors())
 
 // Routes
-server.use('/', [
-    require('./routes/products')
+server.use('/resume', [
+    require('./routes/resume')
 ])
 
 // Start the server
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8082;
 server.listen(port, error => {
     if (error) {
         console.error(error)
     } else {
-        console.log('Started at http://localhost:8080')
+        console.log('Started at http://localhost:8082')
     }
 })

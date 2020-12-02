@@ -19,5 +19,5 @@ RUN npm install --only=production
 COPY . ./
 
 # Run the web service on container startup.
-EXPOSE 8084
+EXPOSE 8085
 CMD [ "node", "index.js" ]

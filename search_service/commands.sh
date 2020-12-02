@@ -1,14 +1,14 @@
 GROUP="cmpt470"
 SERVICE="search_service"
-PORT_DEFINED_IN_INDEXJS="8084"
-LOCALHOST_PORT="8084"
-PROJECT_ID="glossy-cipher-294401"
+PORT_DEFINED_IN_INDEXJS="8085"
+LOCALHOST_PORT="8085"
+PROJECT_ID="cmpt-470-project-production"
 
 build() {
     echo "Building Project..."
     docker build -t $GROUP/$SERVICE .
 
-    # localhost:8084 when accessing locally
+    # localhost:8085 when accessing locally
     docker run -p $LOCALHOST_PORT:$PORT_DEFINED_IN_INDEXJS -d $GROUP/$SERVICE
 }
 
