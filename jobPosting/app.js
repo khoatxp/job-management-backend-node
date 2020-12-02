@@ -39,7 +39,6 @@ app.get('/displayForm',(req,res)=>{
 
 
 app.get('/displayPostList', (req,res)=>{
-    
     const temp = [
         {title: 'Google full stack developer',type:'Internship' ,description: 'This job is for new graduates'},
         {title: 'Amazon full stack developer',type:'Internship' ,description: 'This job is for new graduates'},

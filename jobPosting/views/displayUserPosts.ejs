@@ -11,9 +11,7 @@
 
 </head>
 <body class = "">
-    
 
-    
     <div class="container" style="padding:2em;">
         <div class="row">
           <div class="col-12">
@@ -37,27 +35,22 @@
             <% if(results.length > 0) { %>
                 <% results.forEach(result => { %> 
                 <div class='post-list'>
-                    <h3 >
-                        <%= result._id %>  
-                        <button style="margin-left: 20em;">Edit</button>
-                        <button>Delete</button> 
-                    </h3>
-                    <p><%= result.company %></p>
-                    <p><%= result.name %></p>     
-                                                                     
+                    <a class='post-details' href='/postDdetails/<%= result._id %> '></a>
+                        <h3 >
+                            <%= result._id %>  
+                            <button style="margin-left: 20em;">Edit</button>
+                            <button>Delete</button> 
+                        </h3>
+                    </a>
+                        <p><%= result.company %></p>
+                        <p><%= result.name %></p>                                                    
+                    
                 </div>
-                <!-- <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>-->
                 <% }) %>
             <% } %>
           </div>
         </div>
       </div>
-    <!--Left panel showing something-->
    
     <style>
         body{
@@ -72,7 +65,7 @@
            padding: 0.2em;
        }
        body form label:hover{
-           color:navy;
+           color:red;
        }
 
        .createPost-btn {
@@ -121,6 +114,13 @@
             background-color: red;
             color: white;
             box-shadow: 4px 4px lightgray;
+        }
+        a.post-details{
+            cursor: pointer;
+            border-bottom: none;
+        }
+        a.post-details:hover{
+            border-bottom: none;
         }
         
     </style>
