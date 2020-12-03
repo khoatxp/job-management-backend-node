@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/nav.ejs') %>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body style="font-family: 'Courier New', Courier, monospace; text-align: center;">
+
+    <div style="width: 70%; margin-left: 15em; margin-top: 2em;">
+    
+        <h1><%= post.title  %> </h1>
+        <h4 style="border-bottom:  solid;"><span>Company:  </span><%= post.company  %></h4>
+        <p style="text-align: left;"><%= post.body  %></p>
+
+    </div>
+
+    
+</body>
+</html>

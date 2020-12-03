@@ -35,19 +35,19 @@
             <% if(results.length > 0) { %>
                 <% results.forEach(result => { %> 
                 <div class='post-list'>
-                    <a class='post-details' href='/postDdetails/<%= result._id %> '></a>
-                        <h3 >
-                            <%= result._id %>  
-                            <button style="margin-left: 20em;">Edit</button>
-                            <button>Delete</button> 
-                        </h3>
-                    </a>
-                        <p><%= result.company %></p>
-                        <p><%= result.name %></p>                                                    
+                    <a class='post-details' href='/displayPostList/<%= result.title %>'>
+                        <h3 > <%= result.title %> </h3>     
+                        <h4><%= result.company %></h4>  
+                    </a>      
+                    <button>Edit</button>
+                    <button>Delete</button>                                                   
                     
                 </div>
                 <% }) %>
-            <% } %>
+            <% } else { %>
+                <h1>No posts created</h1>
+            <% } %> 
+
           </div>
         </div>
       </div>
@@ -117,11 +117,12 @@
         }
         a.post-details{
             cursor: pointer;
-            border-bottom: none;
+            color: black;
         }
         a.post-details:hover{
-            border-bottom: none;
+            color:gray;
         }
+        
         
     </style>
 

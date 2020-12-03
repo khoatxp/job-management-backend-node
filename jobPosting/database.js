@@ -1,16 +1,29 @@
 const { MongoClient, ObjectID } = require('mongodb');
 
-const database = "production"
-//const database = "resumeParser"
+const database = "dev";
+
+/*var username = "khoatxp" // Look at all the collections in a database
+        var password = "GfAxnlFdEOYbDUJ8"
+        const uri = `mongodb+srv://${username}:${password}@cluster0.ibt1p.mongodb.net/${database}?retryWrites=true&w=majority`
+MongoClient.connect(uri, function(err, db) {
+    const production = db.db(database);
+    production.listCollections().toArray(function(err,items){
+        console.log(items);
+    });
+});
+*/
+//const database = "production"
+//const database = "dev"
 module.exports = {
     connect: function (collection_name) {
-        var username = "production"
+        /*var username = "production"
         var password = "production"
         const uri = `mongodb+srv://${username}:${password}@cluster0.bgzbd.mongodb.net/${database}?retryWrites=true&w=majority`
-        /*var username = "rthanki";
-        var password = "1234"
-        const uri = `mongodb+srv://rthanki:${password}@cluster0.77jsi.mongodb.net/${database}?retryWrites=true&w=majority`
         */
+       var username = "khoatxp"
+        var password = "GfAxnlFdEOYbDUJ8"
+        const uri = `mongodb+srv://${username}:${password}@cluster0.ibt1p.mongodb.net/${database}?retryWrites=true&w=majority`
+        
 
         return new Promise(function (resolve, reject) {
             MongoClient.connect(uri, function (err, client) {
@@ -66,8 +79,7 @@ module.exports = {
                         reject(err)
                     } else {
                         client.close()
-                        console.log(typeof(items))
-                        console.log("Retrieved: " + JSON.stringify(items))
+                        //console.log("Retrieved: " + JSON.stringify(items))
                         resolve(items)
                     }
                 })

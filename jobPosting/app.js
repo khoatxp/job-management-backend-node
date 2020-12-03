@@ -2,13 +2,13 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const db = require('./database');
+const { render } = require('ejs');
 //console.log(db.findOne('job_posting',{}));
 const app = express();
 const PORT = 5000;
-const obj = {
-    company : 'microsoft'
-};
-//console.log( db.findOne('job_posting',obj) );
+
+db.findOne('jobposts',{createdAt: '2020-12-01T08:18:52.115Z'}).then((results)=>{console.log(results)})
+//db.getAll('users').then( (results)=> console.log(` ${results}`) );
 //Setting view engine
 app.set('view engine', 'ejs');
 
@@ -48,13 +48,26 @@ app.get('/displayPostList', (req,res)=>{
         {title: 'whatsApp full stack developer',type:'Internship' ,description: 'This job is for new graduates'},
         {title: 'nvidia game developer',type:'Internship' ,description: 'This job is for new graduates'},
     ];
-    const posts = db.getAll('job_posting');
+    const posts = db.getAll('jobposts');
    //posts.forEach(post => console.log(post));
     //res.render('displayUserPosts', {posts});
-    posts.then((results) => res.render('displayUserPosts', {results}))
+    posts.then( (results) => res.render('displayUserPosts', {results}) )
     .catch((err)=>console.log(err));
 })
 
+app.get('/displayPostList/:postId', (req,res)=>{
+    const id = req.params.postId;
+    const contents = {
+        title:id
+
+    }
+    console.log(id);
+    db.findOne('jobposts',contents).then((results)=>{
+            res.render('details', {post : results});
+        }).catch(err=>{
+            console.log(err);
+        })
+})
 
 app.post('/displayPostList', (req,res)=>{
     // User inputs
