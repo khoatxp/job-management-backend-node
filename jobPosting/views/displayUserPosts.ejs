@@ -15,22 +15,9 @@
     <div class="container" style="padding:2em;">
         <div class="row">
           <div class="col-12">
+            <!--Importing the main form -->
+            <%- include('./partials/mainForm.ejs') %> 
             
-            <form class="job-form" action="/displayPostList" method="POST"  style="margin-bottom: 5em;">
-                <label for="job-title">Job Title</label>
-                <input type="text" name="job_title" id="job-title" class = "form-control" placeholder="Enter job title" required autofocus><br>
-                <label for="cars">Job Type</label>
-                <select name="jobType" >
-                    <option value="internship">Internship</option>
-                    <option value="fullTime">Full Time</option>
-                    <option value="partTime">Part Time</option>
-                </select><br>
-                <label for="job-description">Job Description</label>
-                <br><textarea class = "form-control" name="job_description" id="job-description" cols="50" rows="10" placeholder="Enter job description"></textarea><br>
-                <button type="submit" class="btn btn-lg btn-primary">Publish</button>
-            </form>
-            
-
             <h1 style="margin-bottom: 2em; border-bottom:solid black;">Your Posts</h1>
             <% if(results.length > 0) { %>
                 <% results.forEach(result => { %> 
@@ -51,85 +38,7 @@
           </div>
         </div>
       </div>
-      
-      
-
-    <style>
-        body{
-            font-family: 'Courier New', Courier, monospace;
-        }
-      
-       #job-description{
-           width:100%;
-       }
-       body form label{
-           font-size: 2rem;
-           padding: 0.2em;
-       }
-       body form label:hover{
-           color:red;
-       }
-
-       .createPost-btn {
-           margin-left: 40em;
-           margin-top: 2em;
-           
-       }
-       div.job-form-container{
-           width: 50em;
-           margin-left: 12em;
-           margin-bottom: 10em;
-       }
-       select{
-            border-top: none;
-            border-left: none;
-            border-right: none;
-            background-color: white;
-            font-size: large;
-            margin: 1em auto;
-            margin-left: 2em;
-            height: 3em;
-            width:14em;
-        }
-        select:hover{
-            border-bottom: solid lightcoral;
-        }
-        div.post-list{
-         border-bottom: solid lightcoral;   
-         margin-bottom: 5em;
-         padding: 1em;
-        }
-        div.post-list button{
-            background-color: red;
-            color: white;
-            font-size:medium;
-            border:none;
-            border-radius: 10%;
-            font-weight: bolder;
-            margin: 1.5em auto;
-            margin-left: 1em;
-            height:2em;
-            width:5em;
-            
-        }
-        div.post-list button:hover{
-            background-color: red;
-            color: white;
-            box-shadow: 4px 4px lightgray;
-        }
-        a.post-details{
-            cursor: pointer;
-            color: black;
-        }
-        a.post-details:hover{
-            color:gray;
-        }
-        
-        
-    </style>
-
-
-
-
+      <!--Importing styles partial-->
+      <%- include('./partials/style.ejs')  %> 
 </body>
 </html>

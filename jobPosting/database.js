@@ -125,7 +125,8 @@ module.exports = {
         return this.connect().then(function (client) {
             return new Promise(function (resolve, reject) {
                 const collection = client.db(database).collection(collection_name)
-                collection.deleteOne({ "_id": new ObjectID(id) }, function(err, res) {
+                
+                collection.findOneAndDelete({"_id": new ObjectID(id)}, function(err, res) {
                     if(err) {
                         reject(err)
                     } else {
@@ -137,19 +138,5 @@ module.exports = {
         })
     },
 
-    findByIdAndDelete: function (collection_name, id) {
-        return this.connect().then(function (client) {
-            return new Promise(function (resolve, reject) {
-                const collection = client.db(database).collection(collection_name)
-                collection.findByIdAndDelete({"_id":new ObjectID(id)}, function(err, res) {
-                    if(err) {
-                        reject(err)
-                    } else {
-                        client.close()
-                        resolve(res)
-                    }
-                })
-            })
-        })
-    }
+    
 }

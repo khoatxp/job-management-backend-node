@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Importing navigation bar -->
     <%- include('./partials/nav.ejs') %>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,18 +11,20 @@
 <body style="font-family: 'Courier New', Courier, monospace; text-align: center;">
 
     <div style="width: 70%; margin-left: 15em; margin-top: 2em;">
-    
-        
-        <h1><%= post.title  %> </h1>
-        <h4 style="border-bottom:  solid; padding-bottom: 1em; text-align: left;"><span>Company:  </span><%= post.company  %>
-            <form action="/displayPostList/editPost/<%= post._id %> " method="GET">
+        <!--Edit and delete buttons-->
+        <h4>
+            <form action="/displayPostList/editPost/<%= post._id %> " method="GET" style='text-align: right;'>
                 <button style="margin-left: 25em;">Edit</button>
-                <a class="delete" data-doc=" <%= post._id%> ">Delete</a>
-            </form> 
+                <a class="delete" data-doc=" <%= post._id%> " style='color:white'>Delete</a>
+            </form>
+        </h4> 
+        <!-- Post details -->
+        <h1><%= post.title  %> </h1>
+        <h4 style="border-bottom:  solid; padding-bottom: 1em; text-align: left;"><span>Company:</span><%= post.company %>
         </h4>
-        
         <p style="text-align: left;"><%= post.body  %></p>
 
+        <!-- script for delete request -->
         <script>
             const del = document.querySelector('a.delete');
             del.addEventListener('click', (e) => {
@@ -42,15 +45,23 @@
 
     </div>
     <style>
-        a.delete{
+        button{
             cursor:pointer;
-            border: soid;
+            border: none;
             background-color: red;
             color: white;
         }
+        button:hover{
+            box-shadow: 4px 4px  lightgray;
+        }
+        a.delete{
+            cursor:pointer;
+            border: none;
+            padding: 0.1em;
+            background-color: red;
+        }
         a.delete:hover{
-            box-shadow: 4px 4px lightgray;
-
+            box-shadow: 4px 4px  lightgray;
         }
     </style>
 

@@ -1,0 +1,19 @@
+<form class="job-form" action="/displayPostList" method="POST"  style="margin-bottom: 5em;">
+    <label for="job-title">Job Title</label>
+    <input type="text" name="job_title" id="job-title" class = "form-control" placeholder="Enter job title" required autofocus><br>
+
+    <label for="job_type">Job Type</label>
+    <select name="jobType" >
+        <option value="internship">Internship</option>
+        <option value="fullTime">Full Time</option>
+        <option value="partTime">Part Time</option>
+    </select><br>
+
+    <label for="company">Company</label>
+    <input type="text" name="company" id="company" class ="form-control" placeholder="Company Name" required ><br>
+
+    <label for="job-description">Job Description</label>
+    <br><textarea class = "form-control" name="job_description" id="job-description" cols="50" rows="10" placeholder="Enter job description"></textarea><br>
+
+    <button type="submit" class="btn btn-lg btn-danger btn-primary">Submit</button>
+</form>
