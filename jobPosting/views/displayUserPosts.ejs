@@ -35,13 +35,13 @@
             <% if(results.length > 0) { %>
                 <% results.forEach(result => { %> 
                 <div class='post-list'>
-                    <a class='post-details' href='/displayPostList/<%= result.title %>'>
+                    <a class='post-details' href='/displayPostList/<%= result._id %>'>
                         <h3 > <%= result.title %> </h3>     
                         <h4><%= result.company %></h4>  
                     </a>      
-                    <button>Edit</button>
-                    <button>Delete</button>                                                   
-                    
+                   <!-- <button>Edit</button>
+                    <button class="delete" data-doc=" <%= result._id%> ">Delete</button>
+                    -->                                                   
                 </div>
                 <% }) %>
             <% } else { %>
@@ -51,7 +51,9 @@
           </div>
         </div>
       </div>
-   
+      
+      
+
     <style>
         body{
             font-family: 'Courier New', Courier, monospace;

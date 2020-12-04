@@ -11,11 +11,48 @@
 
     <div style="width: 70%; margin-left: 15em; margin-top: 2em;">
     
+        
         <h1><%= post.title  %> </h1>
-        <h4 style="border-bottom:  solid;"><span>Company:  </span><%= post.company  %></h4>
+        <h4 style="border-bottom:  solid; padding-bottom: 1em; text-align: left;"><span>Company:  </span><%= post.company  %>
+            <form action="/displayPostList/editPost/<%= post._id %> " method="GET">
+                <button style="margin-left: 25em;">Edit</button>
+                <a class="delete" data-doc=" <%= post._id%> ">Delete</a>
+            </form> 
+        </h4>
+        
         <p style="text-align: left;"><%= post.body  %></p>
 
+        <script>
+            const del = document.querySelector('a.delete');
+            del.addEventListener('click', (e) => {
+                
+              const endpoint = `/displayPostList/${del.dataset.doc}`;
+              //console.log(del.dataset.doc);
+  
+              fetch(endpoint, {
+                  method:"DELETE"
+              })
+              .then((response) => {response.json()})
+              .then((data) => {
+                  console.log(data);
+                  window.location.href = '/displayPostList'})
+              .catch(err => console.log(err));
+            })
+        </script>
+
     </div>
+    <style>
+        a.delete{
+            cursor:pointer;
+            border: soid;
+            background-color: red;
+            color: white;
+        }
+        a.delete:hover{
+            box-shadow: 4px 4px lightgray;
+
+        }
+    </style>
 
     
 </body>

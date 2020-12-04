@@ -35,6 +35,24 @@ module.exports = {
             })
         })
     },
+    
+    findById: function (collection_name, id) {
+        return this.connect().then(function (client) {
+            return new Promise(function (resolve, reject) {
+                const collection = client.db(database).collection(collection_name)
+                collection.findOne({ "_id": new ObjectID(id) }, function (err, post) {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        console.log("Retrieved: " + JSON.stringify(post))
+                        client.close()
+                        resolve(post)
+                    }
+                })
+            })
+        })
+    },
+
 
     findOne: function (collection_name, contents) {
         return this.connect().then(function (client) {
@@ -102,12 +120,28 @@ module.exports = {
             })
         })
     },
-
+//new ObjectID(id)
     delete: function (collection_name, id) {
         return this.connect().then(function (client) {
             return new Promise(function (resolve, reject) {
                 const collection = client.db(database).collection(collection_name)
-                collection.deleteOne({"_id": new ObjectID(id)}, function(err, res) {
+                collection.deleteOne({ "_id": new ObjectID(id) }, function(err, res) {
+                    if(err) {
+                        reject(err)
+                    } else {
+                        client.close()
+                        resolve(res)
+                    }
+                })
+            })
+        })
+    },
+
+    findByIdAndDelete: function (collection_name, id) {
+        return this.connect().then(function (client) {
+            return new Promise(function (resolve, reject) {
+                const collection = client.db(database).collection(collection_name)
+                collection.findByIdAndDelete({"_id":new ObjectID(id)}, function(err, res) {
                     if(err) {
                         reject(err)
                     } else {

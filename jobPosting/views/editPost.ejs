@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('./partials/nav.ejs') %>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body style="font-family: 'Courier New', Courier, monospace; font-size: large; ">
+
+    <form action="/displayPostList/editPost/<%= result._id %>" method="POST" style="margin-top: 1em; margin-left: 2em; width: 80%;">
+        <label for="job_title">Job Title</label><br>
+        <input class='form-control' type="text" name="job_title" value="<%=result.title%>" ><br>
+
+        <label for="company">Company</label><br>
+        <input class='form-control' type="text" name="company" value="<%=result.company%>" ><br>
+
+        <label for="job_desc">Job Description</label><br>
+        <textarea  class='form-control' type="text" name="job_desc" cols="100" rows="20" > <%=result.body%> </textarea><br>
+
+        <button>Submit</button>
+    </form>
+
+    <style>
+         form button{
+            background-color: red;
+            color: white;
+            font-size:medium;
+            border:none;
+            font-weight: bolder;
+            margin: 1.5em auto;
+            height:3em;
+            width:10em;
+            
+        }
+        form button:hover{
+            background-color: red;
+            color: white;
+            box-shadow: 4px 4px lightgray;
+        }
+    </style>
+</body>
+</html>
