@@ -1,6 +1,7 @@
 const { Storage } = require('@google-cloud/storage');
 
-var PROJECT_ID = "cmpt-470-project-production"
+var PROJECT_ID = "jobmanagementsystem"
+var BUCKET = "cmpt470resumes"
 
 module.exports = {
     upload_file: function (bucket_name, path, cloudStoragePath) {

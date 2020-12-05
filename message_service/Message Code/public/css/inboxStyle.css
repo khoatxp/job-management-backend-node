@@ -1,0 +1,89 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    background-color: blue;
+    min-width: 100%;
+    height: 75px;
+    color: white;
+    font-size: 30px;
+}
+
+/* The sidebar menu */
+.inboxList {
+    height: calc(100% - 75px); 
+    width: 400px; 
+    position: fixed; 
+    z-index: 1; 
+    bottom: 0; 
+    left: 0;
+    background-color: white;   
+    
+  }
+  
+  
+  /* When you mouse over the navigation links, change their color */
+  .inboxList a:hover {
+    color: #f1f1f1;
+  }
+  
+  /* Style page content */
+  .messageBox {
+    margin-left: 21%; 
+    border-style: solid;
+    border-width: 1px;
+    height: 500px;
+    overflow-y: scroll;
+  }
+
+  .inboxTitle{
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    margin: auto;
+    padding: 10px;
+    
+  }
+
+  .inboxListTitle{
+      background: lightgray;
+      height: 50px;
+      padding-top: 0;
+  }
+
+  .messageLinks{
+    overflow-y: scroll;
+    height: calc(100% - 50px);
+  }
+
+  .messageLink{
+      width: 100%;
+      height: 50px;
+      border-style: solid;
+      border-width: 1px;
+      padding: 5px;
+      background-color: white;
+      font-size: 20px;
+  }
+
+  .message{
+    width: 95%;
+    padding: 10px;
+    border-style: solid;
+    border-width: 2px;
+    margin: 20px;
+  }
+
+  .sendMessageBox{
+    border-style: solid;
+    border-width: 1px;
+    bottom: 0;
+    margin-left: 21%; 
+  }
+
+  input{
+    width: 300px;
+    height: 50px;
+  }
