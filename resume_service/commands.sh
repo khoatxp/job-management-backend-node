@@ -2,7 +2,7 @@ GROUP="cmpt470"
 SERVICE="resume_service"
 PORT_DEFINED_IN_INDEXJS="8082"
 LOCALHOST_PORT="8082"
-PROJECT_ID="cmpt-470-project-production"
+PROJECT_ID="jobmanagementsystem"
 
 build() {
     echo "Building Project..."

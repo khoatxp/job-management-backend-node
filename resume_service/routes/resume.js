@@ -18,7 +18,7 @@ router.post('/', upload.single('file'), function (req, res, next) {
 
     file.rename(orgPath, renamePath)
         .then(function (finalPath) {
-            const BUCKET = "cmpt470-resumes"
+            const BUCKET = "cmpt470resumes"
             var cloudStoragePath = userId + "/" + filename
             return storage.upload_file(BUCKET, finalPath, cloudStoragePath)
         })
