@@ -14,6 +14,10 @@ server.use('/resume', [
     require('./routes/resume')
 ])
 
+server.use('/user', [
+    require('./routes/user')
+])
+
 // Start the server
 const port = process.env.PORT || 8082;
 server.listen(port, error => {
