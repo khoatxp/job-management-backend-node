@@ -169,3 +169,21 @@ Base Url: https://resumeservice-vbryqcvj2a-uw.a.run.app
     {
         "url": "https://storage.googleapis.com/cmpt470-resumes/123/resume.pdf"
     }
+
+---
+## Upload profile picture to Google Cloud
+
+`POST /user/profilepicture`
+
+### Request
+
+- file(File)
+- userId(String)
+
+### Response
+
+    Status: 200 Ok
+
+    {
+        "url": "https://storage.googleapis.com/cmpt-470-profilepictures/123/profile_picture.png"
+    }

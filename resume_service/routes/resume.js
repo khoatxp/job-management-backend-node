@@ -18,8 +18,9 @@ router.post('/', upload.single('file'), function (req, res, next) {
 
     file.rename(orgPath, renamePath)
         .then(function (finalPath) {
+            const BUCKET = "cmpt470-resumes"
             var cloudStoragePath = userId + "/" + filename
-            return storage.upload_file(finalPath, cloudStoragePath)
+            return storage.upload_file(BUCKET, finalPath, cloudStoragePath)
         })
         .then(function (cloudPath) {
             var url = `https://storage.googleapis.com/${cloudPath.bucket.name}/${cloudPath.name}`
