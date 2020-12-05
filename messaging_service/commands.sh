@@ -1,18 +1,14 @@
 GROUP="cmpt470"
-SERVICE="message_service"
-PORT_DEFINED_IN_INDEXJS="8080"
-LOCALHOST_PORT="8081"
+SERVICE="messaging_service"
+PORT_DEFINED_IN_INDEXJS="8088"
+LOCALHOST_PORT="8088"
 PROJECT_ID="jobmanagementsystem"
-
-# docker build -t $GROUP/$SERVICE .
-# # localhost:8081 when accessing locally
-# docker run -p 8081:$PORT_DEFINED_IN_INDEXJS -d $GROUP/$SERVICE
 
 build() {
     echo "Building Project..."
     docker build -t $GROUP/$SERVICE .
 
-    # localhost:8081 when accessing locally
+    # localhost:8088 when accessing locally
     docker run -p $LOCALHOST_PORT:$PORT_DEFINED_IN_INDEXJS -d $GROUP/$SERVICE
 }
 
@@ -24,7 +20,7 @@ deploy() {
 
 kill() {
     echo "Turning off local container..."
-    CONTAINER_ID=$(docker ps | grep 'cmpt470/message_service' | awk '{ print $1 }')
+    CONTAINER_ID=$(docker ps | grep 'cmpt470/user_service' | awk '{ print $1 }')
     docker kill $CONTAINER_ID
     echo "Killed..."
 }
