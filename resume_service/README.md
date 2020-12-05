@@ -1,8 +1,6 @@
 # REST API
 
-The REST API to the example app is described below.
-
-Base Url: https://resumeservice-vbryqcvj2a-uw.a.run.app
+Base Url: https://resumeservice-pvwu2w75ta-uw.a.run.app
 
 ---
 ## Parse Resume
