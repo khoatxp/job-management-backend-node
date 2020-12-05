@@ -1,8 +1,6 @@
 # REST API
 
-The REST API to the example app is described below.
-
-Base URL: https://searchservice-vbryqcvj2a-uw.a.run.app
+Base URL: https://searchservice-pvwu2w75ta-uw.a.run.app
 
 ---
 ## Search for Job Postings
