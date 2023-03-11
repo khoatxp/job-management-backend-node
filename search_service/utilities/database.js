@@ -9,7 +9,7 @@ module.exports = {
         const uri = `mongodb+srv://${username}:${password}@cluster0.ibt1p.mongodb.net/${database}?retryWrites=true&w=majority`
 
         return new Promise(function (resolve, reject) {
-            MongoClient.connect(uri, function (err, client) {
+            MongoClient.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true}, function (err, client) {
                 if (err) {
                     reject(err);
                 } else {
