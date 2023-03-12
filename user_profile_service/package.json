@@ -1,0 +1,31 @@
+{
+    "name": "helloworld",
+    "description": "Simple hello world sample in Node",
+    "version": "1.0.0",
+    "private": true,
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "test": "mocha test/index.test.js --exit",
+        "system-test": "NAME=Cloud test/runner.sh mocha test/system.test.js --timeout=30000",
+        "lint": "eslint '**/*.js'",
+        "fix": "eslint --fix '**/*.js'"
+    },
+    "engines": {
+        "node": ">= 12.0.0"
+    },
+    "author": "Google LLC",
+    "license": "Apache-2.0",
+    "dependencies": {
+        "express": "^4.17.1",
+        "multer": "1.4.2",
+        "@google-cloud/storage": "5.3.0",
+        "axios": "0.20.0",
+        "cors": "2.8.5"
+    },
+    "devDependencies": {
+        "got": "^11.0.0",
+        "mocha": "^8.0.0",
+        "supertest": "^6.0.0"
+    }
+}
