@@ -2,11 +2,12 @@
 
 const express = require('express')
 var multer = require('multer')
-var upload = multer({ dest: 'uploads/' })
+var upload = multer({dest: 'uploads/'})
 const file = require("./../utilities/file")
 const storage = require("./../utilities/storage")
-const rest = require("./../utilities/rest_caller")
-
+const fs = require('fs');
+const FormData = require('form-data');
+const fetch = require('node-fetch');
 // Create express router
 const router = express.Router()
 
@@ -24,7 +25,7 @@ router.post('/', upload.single('file'), function (req, res, next) {
         })
         .then(function (cloudPath) {
             var url = `https://storage.googleapis.com/${cloudPath.bucket.name}/${cloudPath.name}`
-            res.status(200).json({ url: url })
+            res.status(200).json({url: url})
         })
         .catch(function (err) {
             console.error("ERROR OCCURED: " + err)
@@ -39,13 +40,33 @@ router.post('/parse', upload.single('file'), function (req, res, next) {
 
     file.rename(orgPath, renamePath)
         .then(function (path) {
-            var base64String = file.base64(path)
-            var uri = "https://g5wkkduchj.execute-api.us-east-2.amazonaws.com/Prod"
-            var contents = '{"content": "' + base64String + '"}'
-            return rest.post_call(uri, contents)
-        })
-        .then(function (response) {
-            res.json({ data: response })
+            const formData = new FormData();
+            const fileStream = fs.createReadStream(path);
+            formData.append('resume', fileStream);
+            return fetch("https://jobs.lever.co/parseResume", {
+                method: "POST",
+                headers: {
+                    Origin: "https://jobs.lever.co",
+                    Referer: "https://jobs.lever.co/parse",
+                },
+                body: formData,
+            })
+                .then((response) => {
+                    if (!response.ok) {
+                        res
+                            .status(response.status)
+                            .send(
+                                response.status == 500
+                                    ? "Could not parse resume"
+                                    : "Could not connect to Lever"
+                            );
+
+                        return;
+                    }
+                    return response.json();
+                })
+                .then((response) => res.json({data: response}))
+                .catch((err)=> console.log(err));
         })
         .catch(function (err) {
             console.error("ERROR OCCURED: " + err)
@@ -55,3 +76,4 @@ router.post('/parse', upload.single('file'), function (req, res, next) {
 
 // Export router
 module.exports = router
+
