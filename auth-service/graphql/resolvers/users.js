@@ -42,6 +42,25 @@ module.exports = {
         }
     },
     Mutation: {
+        async changeProfile(_, {userId, firstName, lastName, biography}, context) {
+            try {
+                const user = await User.findByIdAndUpdate(
+                    userId,
+                    {firstName: firstName, lastName: lastName, biography: biography},
+                    {new: true}
+                );
+
+                // Return updated user profile data
+                return {
+                    firstName: user.firstName,
+                    lastName: user.lastName,
+                    biography: user.biography,
+                    userId: userId
+                };
+            } catch (err) {
+                throw new Error(err);
+            }
+        },
         async changeProfileUrl(_, {userId, profileUrl}, context) {
             try {
                 const user = await User.findByIdAndUpdate(

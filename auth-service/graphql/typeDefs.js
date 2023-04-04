@@ -59,6 +59,7 @@ module.exports = gql`
         createJobPost(body: String!, company: String!, salary: String!, title:String!, location:String!): JobPost!
         deleteJobPost(postId: ID!): String!
         changeProfileUrl(userId: ID!, profileUrl: String!): User
+        changeProfile(userId: ID!, firstName: String!,lastName: String!, biography: String!): User
         addApplicant(postId:ID!, resume: String!, originalFile: String!): String!
     }
 `;
