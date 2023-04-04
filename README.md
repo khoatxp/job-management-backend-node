@@ -1,8 +1,6 @@
-# CMPT470 - Resume Parser
+# CMPT474 - Co-op Learning Platform
 
 ## Description
-
-This is a Resume Parser. Course cmpt470.
 
 All POST request body has to be encoded in JSON.
 

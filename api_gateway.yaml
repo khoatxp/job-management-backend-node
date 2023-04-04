@@ -1,0 +1,79 @@
+swagger: "2.0"
+info:
+  title: coop-job-cloud-run
+  description: Cloud Run API Gateway
+  version: 1.0.0
+schemes:
+  - https
+produces:
+  - application/jsons
+security:
+  - firebase: [ ]
+host: "backend-1wa4n32caf10v.apigateway.jobmanagementsystem.cloud.goog"
+x-google-endpoints:
+  - name: "backend-1wa4n32caf10v.apigateway.jobmanagementsystem.cloud.goog"
+    allowCors: True
+securityDefinitions:
+  api_key:
+    type: "apiKey"
+    name: "key"
+    in: "query"
+
+paths:
+  /search:
+    get:
+      summary: Search API
+      operationId: search-service-get
+      x-google-backend:
+        address: https://search-service-pvwu2w75ta-wl.a.run.app/jobPosting
+      security:
+      - api_key: []
+      responses:
+        "200":
+          description: OK
+  /user-profile:
+    post:
+      summary: User Profile API
+      operationId: user-service-post
+      x-google-backend:
+        address: https://user-profile-service-pvwu2w75ta-wl.a.run.app/user/profilepicture
+      security:
+      - api_key: []
+      responses:
+        "200":
+          description: OK
+  /auth:
+    post:
+      summary: Auth API GraphQL
+      operationId: auth-service-post
+      x-google-backend:
+        address: https://authentication-service-pvwu2w75ta-wl.a.run.app
+      security:
+      - api_key: []
+      responses:
+        "200":
+          description: OK
+  /resume:
+    post:
+      summary: Save resume API
+      operationId: resume-service-save
+      x-google-backend:
+        address: https://resume-service-pvwu2w75ta-wl.a.run.app/resume
+      security:
+      - api_key: []
+      responses:
+        "200":
+          description: OK
+  /resume/parse:
+    post:
+      summary: Parse resume API
+      operationId: resume-service-parse
+      x-google-backend:
+        address: https://resume-service-pvwu2w75ta-wl.a.run.app/resume/parse
+      security:
+      - api_key: []
+      responses:
+        "200":
+          description: OK
+
+
